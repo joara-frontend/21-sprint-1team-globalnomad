@@ -5,10 +5,13 @@ import {
 } from "@/types/myReservations.type";
 import axios from "./axios";
 
+export const MY_RESERVATIONS_PAGE_SIZE = 5;
+export const MY_DASHBOARD_LIST_SIZE = 30; // useUserBadge + useNomadReport 공유
+
 export const getMyReservationList = async ({
   cursorId,
   status,
-  size = 5,
+  size = MY_RESERVATIONS_PAGE_SIZE,
 }: {
   cursorId?: number | null;
   status?: string;

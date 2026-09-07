@@ -147,7 +147,10 @@ export const updateReservationStatus = async ({
   reservationId: number;
   status: ReservationMutationStatus;
 }): Promise<void> => {
-  await axios.patch(`/my-activities/${activityId}/reservations/${reservationId}`, {
-    status,
-  });
+  await axios.patch(
+    `/my-activities/${activityId}/reservations/${reservationId}`,
+    {
+      status,
+    },
+  );
 };
