@@ -6,19 +6,21 @@ import ActivitySummary from "./_components/ActivitySummary";
 import ReportList from "./_components/ReportList";
 import HistoryLog from "./_components/HistoryLog";
 import NomadPageSkeleton from "./_components/NomadPageSkeleton";
+import ReportListSkeleton from "./_components/ReportListSkeleton";
 
 export default function NomadReportPage() {
   const {
     reservationData,
     activityData,
-    isLoading,
+    isBaseLoading,
+    isReportLoading,
     user,
     mostReservation,
     mostActivity,
     historyLog,
   } = useNomadReport();
 
-  if (isLoading) return <NomadPageSkeleton />;
+  if (isBaseLoading) return <NomadPageSkeleton />;
 
   return (
     <div>
@@ -51,11 +53,15 @@ export default function NomadReportPage() {
             activityDataTotalCount={activityData?.totalCount || 0}
           />
 
-          <ReportList
-            user={user?.nickname || ""}
-            mostReservation={mostReservation}
-            mostActivity={mostActivity}
-          />
+          {isReportLoading ? (
+            <ReportListSkeleton />
+          ) : (
+            <ReportList
+              user={user?.nickname || ""}
+              mostReservation={mostReservation}
+              mostActivity={mostActivity}
+            />
+          )}
 
           <HistoryLog historyLog={historyLog} />
         </article>

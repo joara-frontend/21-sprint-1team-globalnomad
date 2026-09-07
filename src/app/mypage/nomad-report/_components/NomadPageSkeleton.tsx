@@ -1,7 +1,8 @@
 import { cn } from "@/commons/utils/cn";
 import { Skeleton } from "@/components/ui/Skeleton/Skeleton";
+import ReportListSkeleton from "./ReportListSkeleton";
 
-export default function nomadPageSkeleton() {
+export default function NomadPageSkeleton() {
   return (
     <div>
       <div className="mt-[10px]">
@@ -28,10 +29,7 @@ export default function nomadPageSkeleton() {
         <article className="flex flex-col gap-[24px]">
           <Skeleton className="w-full h-[54px]"></Skeleton>
 
-          <div className="flex justify-center items-center flex-col md:flex-row gap-[24px]">
-            <Skeleton className="w-full md:max-w-[228px] h-[336px] rounded-2xl md:rounded-3xl"></Skeleton>
-            <Skeleton className="w-full md:max-w-[228px] h-[336px] rounded-2xl md:rounded-3xl"></Skeleton>
-          </div>
+          <ReportListSkeleton />
 
           <ul className="flex flex-col gap-[24px] mt-[50px] md:mt-[70px]">
             <Skeleton className="w-full h-[54px] md:h-[27px]"></Skeleton>

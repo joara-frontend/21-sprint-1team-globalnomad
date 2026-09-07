@@ -1,20 +1,28 @@
 import { useQueries } from "@tanstack/react-query";
 import { getMyActivityList } from "@/apis/myActivities.api";
-import { getMyReservationList } from "@/apis/myReservations.api";
+import {
+  getMyReservationList,
+  MY_DASHBOARD_LIST_SIZE,
+} from "@/apis/myReservations.api";
 import calculateLevel from "@/app/mypage/_libs/calculateLevel";
 
 export function useUserBadge() {
   const results = useQueries({
     queries: [
       {
-        queryKey: ["myActivities", "badge"],
-        queryFn: () => getMyActivityList({ cursorId: null }),
-        staleTime: 0,
+        queryKey: ["myActivities", "dashboard"],
+        queryFn: () =>
+          getMyActivityList({ cursorId: null, size: MY_DASHBOARD_LIST_SIZE }),
+        staleTime: 60_000,
       },
       {
-        queryKey: ["myReservations", "badge"],
-        queryFn: () => getMyReservationList({ cursorId: null }),
-        staleTime: 0,
+        queryKey: ["myReservations", "dashboard"],
+        queryFn: () =>
+          getMyReservationList({
+            cursorId: null,
+            size: MY_DASHBOARD_LIST_SIZE,
+          }),
+        staleTime: 60_000,
       },
     ],
   });
